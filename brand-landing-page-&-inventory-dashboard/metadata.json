@@ -1,0 +1,6 @@
+{
+  "name": "Brand Landing Page & Inventory Dashboard",
+  "description": "A premium brand landing page with real-time inventory management, sales analytics, low stock alerts, digital payment integration, role-based access, and PDF/Excel exports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "product": {
+      "title": "Product",
+      "description": "Inventory product items available for purchase",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "stock": { "type": "number" },
+        "lowStockThreshold": { "type": "number" },
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "soldCount": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "price", "stock", "category"]
+    },
+    "transaction": {
+      "title": "Transaction",
+      "description": "Purchase transaction logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "items": { "type": "array" },
+        "totalAmount": { "type": "number" },
+        "customerName": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "items", "totalAmount", "customerName", "customerEmail", "paymentMethod", "paymentStatus", "date"]
+    },
+    "landingContent": {
+      "title": "LandingContent",
+      "description": "Hero, about text, and brand settings for the landing page",
+      "type": "object",
+      "properties": {
+        "brandName": { "type": "string" },
+        "heroTitle": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "heroImageUrl": { "type": "string" },
+        "aboutText": { "type": "string" },
+        "aboutImageUrl": { "type": "string" },
+        "ctaText": { "type": "string" },
+        "contactEmail": { "type": "string" },
+        "contactPhone": { "type": "string" },
+        "contactAddress": { "type": "string" },
+        "features": { "type": "array" }
+      }
+    },
+    "userProfile": {
+      "title": "UserProfile",
+      "description": "User account security profiles and roles",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "displayName", "role", "createdAt"]
+    },
+    "customerFeedback": {
+      "title": "CustomerFeedback",
+      "description": "Messages and contact form submissions from customers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["Baru", "Dihubungi", "Selesai"] },
+        "createdAt": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "message", "createdAt", "status"]
+    }
+  },
+  "firestore": {
+    "settings/landing_content": {
+      "schema": "landingContent",
+      "description": "Landing page brand configuration"
+    },
+    "products/{productId}": {
+      "schema": "product",
+      "description": "Individual furniture product items"
+    },
+    "transactions/{transactionId}": {
+      "schema": "transaction",
+      "description": "Individual transactions logs"
+    },
+    "users/{userId}": {
+      "schema": "userProfile",
+      "description": "User security roles"
+    },
+    "feedbacks/{feedbackId}": {
+      "schema": "customerFeedback",
+      "description": "Customer contact form and feedback submissions"
+    }
+  }
+}
